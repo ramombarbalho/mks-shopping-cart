@@ -7,8 +7,9 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
-  background-color: blue;
+  height: 10rem;
+  padding: 5px 50px;
+  background-color: var(--color-blue);
 `;
 
 const Header: React.FC = () => {

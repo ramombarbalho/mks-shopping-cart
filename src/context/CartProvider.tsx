@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import ShoppingCart from "../components/ShoppingCart";
 import { ProductModel } from "../models/Product";
 
@@ -80,13 +80,4 @@ const ShoppingCartProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const useShoppingCart = () => {
-  const context = useContext(ShoppingCartContext);
-  if (context === undefined)
-    throw new Error(
-      "ShoppingCartContext was used outside of ShoppingCartProvider"
-    );
-  return context;
-};
-
-export { ShoppingCartProvider, useShoppingCart };
+export { ShoppingCartProvider, ShoppingCartContext };

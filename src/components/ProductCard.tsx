@@ -1,67 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 import { ProductModel } from "../models/Product";
-import { useShoppingCart } from "../context/CartProvider";
-import { formatCurrency } from "../utilities/formatCurrency";
+import { useShoppingCart } from "../hooks/useShoppingCart";
+import ProductCardImg from "./ProductCardImg";
+import ProductCardInfo from "./ProductCardInfo";
+import PurshcaseIcon from "./PurshcaseIcon";
+import ProductCardButton from "./ProductCardButton";
 
 const StyledProductCard = styled.li`
   display: grid;
   grid-template-rows: auto 1fr auto;
-  border: 1px solid black;
+  width: 217.56px;
+  height: 285px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 2px 8px 0px #00000022;
+  overflow: hidden;
 `;
 
 const ProductCard: React.FC<{
   product: ProductModel;
 }> = ({ product }) => {
-  const { addItem, cartItems } = useShoppingCart();
+  const { cartItems } = useShoppingCart();
 
   const { photo, id, name, price, description } = product;
   const inCart = cartItems.some((item) => item.id === id);
 
-  function handleAddItem() {
-    if (inCart) return;
-    addItem(product);
-  }
-
   return (
     <StyledProductCard>
-      <img
-        src={photo}
-        alt={name}
-        width="214"
-        height="214"
-        style={{ justifySelf: "center" }}
-      />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          margin: "5px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-          }}
-        >
-          <p style={{ fontSize: "2rem" }}>{name}</p>
-          <p style={{ backgroundColor: "#333", color: "white" }}>
-            {formatCurrency(price)}
-          </p>
-        </div>
-        <p style={{ color: "grey" }}>{description}</p>
-      </div>
-      <button
-        style={{ width: "100%", color: "white", backgroundColor: "blue" }}
-        onClick={handleAddItem}
-      >
-        icon {inCart ? "ITEM ADICIONADO" : "COMPRAR"}
-      </button>
+      <ProductCardImg photo={photo} name={name} size={{ w: 145, h: 145 }} />
+      <ProductCardInfo name={name} price={price} description={description} />
+      <ProductCardButton product={product} inCart={inCart}>
+        <PurshcaseIcon />
+        {inCart ? "ADICIONADO" : "COMPRAR"}
+      </ProductCardButton>
     </StyledProductCard>
   );
 };
