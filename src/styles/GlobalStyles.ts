@@ -21,7 +21,6 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
   height: 100vh;
   width: 100vw;
 }

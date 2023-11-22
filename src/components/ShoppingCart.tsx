@@ -24,12 +24,11 @@ const variants = {
     },
   },
 };
-
 const StyledShoppingCart = styled(motion.section)`
   display: grid;
   grid-template-rows: auto 1fr auto;
   justify-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: ${cartWidth};

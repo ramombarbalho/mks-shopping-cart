@@ -7,7 +7,6 @@ const StyledMain = styled.main`
   justify-content: center;
   align-content: center;
   padding: 5px;
-  overflow: auto;
   background-color: #fafafa;
 `;
 

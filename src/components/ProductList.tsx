@@ -8,8 +8,7 @@ const StyledProductList = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  max-width: 1000px;
-  height: 601px;
+  padding: 15px 0;
 
   @media (max-width: 950px) {
     grid-template-columns: repeat(3, 1fr);
