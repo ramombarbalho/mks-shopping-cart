@@ -17,14 +17,15 @@ const StyledShoppingCartTotalPrice = styled.div`
 
 const ShoppingCartTotalPrice: React.FC = () => {
   const { cartItems } = useShoppingCart();
+
+  const total = cartItems.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+
   return (
     <StyledShoppingCartTotalPrice>
       <span>Total:</span>
-      {formatCurrency(
-        cartItems.reduce((total, item) => {
-          return total + item.price * item.quantity;
-        }, 0)
-      )}
+      {formatCurrency(total)}
     </StyledShoppingCartTotalPrice>
   );
 };
